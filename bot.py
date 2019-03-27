@@ -57,7 +57,10 @@ def echo_all(updates):
             img_url = get_image_url(text)
             try:
                 send_message(text, chat)
-                send_image(img_url, chat)
+                if img_url == "Картинок на такой запрос нет :(" or img_url == "Картиночки не загрузились :(":
+                    send_message(img_url, chat)
+                else:
+                    send_image(img_url, chat)
             except ConnectionError:
                 print("Сообщеньки не отправились :(")
 
